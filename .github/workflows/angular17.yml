@@ -1,24 +1,53 @@
+# name: Angular17 App
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+# jobs:
+#   init:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [20.9.0]
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Starting Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - name: install modules
+#         run: npm install
+#       - name: build project
+#         run: ng build
+# - name: test
+#   run: ng test
 name: Angular17 App
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   init:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [20.9.0]
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Starting Node.js ${{ matrix.node-version }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
+
+      - name: Install dependencies
         run: npm install
-      - name: build project
-        run: ng build
-      # - name: test
-      #   run: ng test
+
+      - name: Build project
+        run: npm run build -- --prod
