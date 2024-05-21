@@ -1,0 +1,24 @@
+name: Angular17 App
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.13.0]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: instal modules
+        run: npm instal
+      - name: build project
+        run: ng build
+      # - name: test
+      #   run: ng test
