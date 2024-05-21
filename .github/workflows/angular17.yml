@@ -22,6 +22,7 @@
 #         run: ng build
 # - name: test
 #   run: ng test
+
 name: Angular17 App
 
 on:
@@ -50,7 +51,7 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build -- --prod
+        run: npm run build -- --configuration production
 
       # - name: Run tests
       #   run: npm run test -- --watch=false --no-progress --browsers=ChromeHeadless
