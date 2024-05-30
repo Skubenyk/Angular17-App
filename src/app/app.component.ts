@@ -1,25 +1,11 @@
 import { ProductsService } from './services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './models/product';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-  title = 'Best ukrainian shop';
-  products: IProduct[] = [];
-  loading = false;
-  term = '';
-
-  constructor(private productsService: ProductsService) {}
-
-  ngOnInit(): void {
-    this.loading = true;
-    this.productsService.getAll().subscribe((products: IProduct[]) => {
-      this.products = products;
-      this.loading = false;
-    });
-  }
-}
+export class AppComponent {}

@@ -1,27 +1,8 @@
 <app-global-error></app-global-error>
 
-<div class="max-w-2xl container mx-auto pt-5">
-  <h1 class="font-bold mb-2 text-center text-lg">{{title | titlecase}}</h1>
+<app-navigation></app-navigation>
 
-  <input type="text" class="mb-2 border py-2 px-4 w-full" placeholder="Search products" [(ngModel)]="term">
-
-  <!-- <p *ngIf="loading" class="text-center text-lg">Loading...</p>  -->
-  @if (loading) {
-  <div class="text-center text-lg"><!-- preloader.component.html -->
-    <div
-      class="preloader flex justify-center items-center h-screen w-screen fixed top-0 left-0 bg-black bg-opacity-50 z-50">
-      <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24"></div>
-    </div>
-  </div>
-  }
-
-  <!-- <app-product *ngFor="let product of products; let i=index" [product]="product"></app-product> -->
-  @for (product of products | filterProducts:term; track $index) {
-  <app-product [product]="product"></app-product>
-  }
-
-  <app-modal title="Create new product">
-    <app-create-product></app-create-product>
-  </app-modal>
+<div class="max-w-2xl container mx-auto pt-5 mt-[50px]">
+  <router-outlet></router-outlet>
 
 </div>
