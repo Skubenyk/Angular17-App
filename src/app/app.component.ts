@@ -8,9 +8,10 @@ import { IProduct } from './models/product';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  title = 'Best shop';
+  title = 'Best ukrainian shop';
   products: IProduct[] = [];
   loading = false;
+  term = '';
 
   constructor(private productsService: ProductsService) {}
 
